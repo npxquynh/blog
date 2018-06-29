@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>First Post | My New Hugo Site</title>
+    <title>Hugo theme does not work with GitHub Project Pages | Blog</title>
     <link rel="stylesheet" href="/blog/css/style.css" />
     <link rel="stylesheet" href="/blog/css/fonts.css" />
     
@@ -18,7 +18,7 @@
       
       
       <li class="pull-left ">
-        <a href="http://npxquynh.github.io/blog">/home/my new hugo site</a>
+        <a href="http://npxquynh.github.io/blog">/home/blog</a>
       </li>
       
 
@@ -34,7 +34,7 @@
     <br/>
 
 <div class="article-meta">
-<h1><span class="title">First Post</span></h1>
+<h1><span class="title">Hugo theme does not work with GitHub Project Pages</span></h1>
 
 <h2 class="date">2018/06/29</h2>
 <p class="terms">
@@ -49,7 +49,30 @@
 
 
 <main>
-<p>First post</p>
+
+
+<p>;TLDR
+Read the document of deployment for GitHub Project Pages again</p>
+
+<h3 id="my-setup">My setup</h3>
+
+<ol>
+<li>Setup a simple site with Hugo with <a href="https://gohugo.io/getting-started/quick-start/"><em>Quick Start</em> tutorial</a></li>
+<li>Use <em>Project Pages</em> on GitHub to host this blog at <code>&lt;USERNAME&gt;.github.io/&lt;PROJECT_NAME&gt;</code> . The <a href="https://help.github.com/articles/user-organization-and-project-pages/#user--organization-pages">GitHub page documentation</a> explains the differences between the two. The main reason I chose <em>Project Pages</em> over <em>User Pages</em> is because only <em>master</em> branch can be used for publishing.</li>
+<li>Follow the <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#deployment-of-project-pages-from-your-gh-pages-branch">Deployment of Project Pages From Your <code>gh-pages</code> branch</a></li>
+</ol>
+
+<h3 id="problem">Problem</h3>
+
+<p>The theme doesn&rsquo;t work when I tried on GitHub</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>The <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#github-project-pages">Deployment of GitHub Project Pages documentation</a> mentioned it right in the beginning. But somehow I skipped through it. So I write the first post to remind myself to read more carefully next time.</p>
+
+<blockquote>
+<p>Make sure your <code>baseURL</code> key-value in your <a href="https://gohugo.io/getting-started/configuration/">site configuration</a> reflects the full URL of your GitHub pages repository if you’re using the default GH Pages URL (e.g., <code>&lt;USERNAME&gt;.github.io/&lt;PROJECT&gt;/</code>) and not a custom domain.</p>
+</blockquote>
 
 </main>
 

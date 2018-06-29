@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My New Hugo Site</title>
+    <title>Posts on Blog</title>
     <link>http://npxquynh.github.io/blog/posts/</link>
-    <description>Recent content in Posts on My New Hugo Site</description>
+    <description>Recent content in Posts on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 29 Jun 2018 01:29:59 +0200</lastBuildDate>
@@ -12,12 +12,13 @@
     
     
     <item>
-      <title>First Post</title>
+      <title>Hugo theme does not work with GitHub Project Pages</title>
       <link>http://npxquynh.github.io/blog/posts/first-post/</link>
       <pubDate>Fri, 29 Jun 2018 01:29:59 +0200</pubDate>
       
       <guid>http://npxquynh.github.io/blog/posts/first-post/</guid>
-      <description>First post</description>
+      <description>;TLDR Read the document of deployment for GitHub Project Pages again
+My setup  Setup a simple site with Hugo with Quick Start tutorial Use Project Pages on GitHub to host this blog at &amp;lt;USERNAME&amp;gt;.github.io/&amp;lt;PROJECT_NAME&amp;gt; . The GitHub page documentation explains the differences between the two. The main reason I chose Project Pages over User Pages is because only master branch can be used for publishing. Follow the Deployment of Project Pages From Your gh-pages branch  Problem The theme doesn&amp;rsquo;t work when I tried on GitHub</description>
     </item>
     
   </channel>
