@@ -6,10 +6,21 @@
     <description>Recent content on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Jun 2018 01:29:59 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jul 2018 23:13:36 +0200</lastBuildDate>
     
 	<atom:link href="http://npxquynh.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Block Proc Lambda</title>
+      <link>http://npxquynh.github.io/blog/posts/block-proc-lambda/</link>
+      <pubDate>Wed, 11 Jul 2018 23:13:36 +0200</pubDate>
+      
+      <guid>http://npxquynh.github.io/blog/posts/block-proc-lambda/</guid>
+      <description>I was reading the Mastering Ruby blocks in less than 5 minutes and I was confused on the part on how &amp;amp;block means. So I went back to the basic.
+Blocks are syntactic structures in Ruby; they are not objects, and cannot be manipulated as objects. It is possible, however, to create an object that represents a block. And that object is call Proc object.
+# Block [-1, 0, 1].</description>
+    </item>
     
     <item>
       <title>Hugo theme does not work with GitHub Project Pages</title>
@@ -17,8 +28,9 @@
       <pubDate>Fri, 29 Jun 2018 01:29:59 +0200</pubDate>
       
       <guid>http://npxquynh.github.io/blog/posts/first-post/</guid>
-      <description>;TLDR Read the document of deployment for GitHub Project Pages again
-My setup  Setup a simple site with Hugo with Quick Start tutorial Use Project Pages on GitHub to host this blog at &amp;lt;USERNAME&amp;gt;.github.io/&amp;lt;PROJECT_NAME&amp;gt; . The GitHub page documentation explains the differences between the two. The main reason I chose Project Pages over User Pages is because only master branch can be used for publishing. Follow the Deployment of Project Pages From Your gh-pages branch  Problem The theme doesn&amp;rsquo;t work when I tried on GitHub</description>
+      <description>;TLDR
+Read the document of deployment for GitHub Project Pages again
+My setup  Setup a simple site with Hugo with Quick Start tutorial Use Project Pages on GitHub to host this blog at &amp;lt;USERNAME&amp;gt;.github.io/&amp;lt;PROJECT_NAME&amp;gt; . The GitHub page documentation explains the differences between the two. The main reason I chose Project Pages over User Pages is because only master branch can be used for publishing. Follow the Deployment of Project Pages From Your gh-pages branch  Problem The theme doesn&amp;rsquo;t work when I tried it on GitHub</description>
     </item>
     
   </channel>

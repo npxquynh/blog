@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Block Proc Lambda | Blog</title>
+    <link rel="stylesheet" href="/blog/css/style.css" />
+    <link rel="stylesheet" href="/blog/css/fonts.css" />
+    
+    <header>
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <nav>
+    <ul>
+      
+      
+      <li class="pull-left ">
+        <a href="http://npxquynh.github.io/blog">/home/blog</a>
+      </li>
+      
+
+      
+
+    </ul>
+  </nav>
+</header>
+
+  </head>
+
+  <body>
+    <br/>
+
+<div class="article-meta">
+<h1><span class="title">Block Proc Lambda</span></h1>
+
+<h2 class="date">2018/07/11</h2>
+<p class="terms">
+  
+  
+  
+  
+  
+</p>
+</div>
+
+
+
+<main>
+
+
+<p>I was reading the <a href="https://mixandgo.com/learn/mastering-ruby-blocks-in-less-than-5-minutes">Mastering Ruby blocks in less than 5 minutes</a> and I was confused on the part on how <code>&amp;block</code> means. So I went back to the basic.</p>
+
+<p>Blocks are syntactic structures in Ruby; they are not objects, and cannot be manipulated as objects. It is possible, however, to create an object that represents a block. And that object is call <code>Proc</code> object.</p>
+
+<pre><code># Block
+[-1, 0, 1].map { |x| x &gt; 0 } # block is in between the curly braces
+[-1, 0, 1].map do |x|
+  x &gt; 0
+end                          # block is everything between the do and end
+
+# Creating a proc object that represents a block
+a_proc = Proc.new { |x| x &gt; 0 }
+</code></pre>
+
+<p>Procs have block-like behaviour and lambdas have method-like behaviour. Both, however, are instances of class <code>Proc</code> [333]</p>
+
+<p><code>Proc</code> is a class in Ruby, and it represents blocks of code. And Procs object can either have block-like behavior (for <em>procs</em>) or method-like behaviour (for <em>lambdas</em>). We only saw how to create a proc. Next sections will represent different ways to construct both type of <code>Proc</code> object.</p>
+
+<h3 id="proc-object-that-is-a-proc-not-a-lambda"><code>Proc</code> object that is a proc(not a lambda)</h3>
+
+<pre><code>is_positive_proc = Proc.new { |x| x &gt; 0 } #&lt;Proc:...&gt;
+is_positive_proc_2 = proc { |x| x &gt; 0 } #&lt;Proc: ...&gt; From Ruby 1.9 only
+</code></pre>
+
+<h3 id="proc-object-that-is-a-lambda-not-a-proc"><code>Proc</code> object that is a lambda (not a proc)</h3>
+
+<pre><code>is_positive_lambda = lambda { |x| x &gt; 0 } #&lt;Proc:... (lambda)&gt;
+is_positive_lambda_2 = -&gt; (x) { x &gt; 0 } #&lt;Proc:... (lambda)&gt;
+</code></pre>
+
+<h3 id="calling-proc-object">Calling <code>Proc</code> object</h3>
+
+<p><code>Proc</code> object (either procs or lambdas) are objects, not methods. They can be invoked by <code>call</code> method, or <code>[]</code></p>
+
+<pre><code>is_positive_proc #&lt;Proc:...&gt;
+is_positive_proc(3) # NoMethodError: undefined method `is_positive_proc' for main:Object
+is_positive_proc.call(3) # true
+is_positive_proc[-5] # false
+</code></pre>
+
+<h3 id="resources">Resources</h3>
+
+<ol>
+<li><a href="https://awaxman11.github.io/blog/2013/08/05/what-is-the-difference-between-a-block/">What Is the Difference Between a Block, a Proc, and a Lambda in Ruby?</a> by Adam Waxman</li>
+<li><a href="https://mixandgo.com/learn/mastering-ruby-blocks-in-less-than-5-minutes">Mastering Ruby blocks in less than 5 minutes</a> by Cezar Halmagean</li>
+<li><em>The Ruby Programming Language</em> - David Flanagan and Yukihiro Matsumoto. Though it covers Ruby 1.8 and 1.9, many points are still relevant and for me, it always good to know the background really well.</li>
+</ol>
+
+</main>
+
+    <footer>
+      
+<script>
+(function() {
+  function center_el(tagName) {
+    var tags = document.getElementsByTagName(tagName), i, tag;
+    for (i = 0; i < tags.length; i++) {
+      tag = tags[i];
+      var parent = tag.parentElement;
+      
+      if (parent.childNodes.length === 1) {
+        
+        if (parent.nodeName === 'A') {
+          parent = parent.parentElement;
+          if (parent.childNodes.length != 1) continue;
+        }
+        if (parent.nodeName === 'P') parent.style.textAlign = 'center';
+      }
+    }
+  }
+  var tagNames = ['img', 'embed', 'object'];
+  for (var i = 0; i < tagNames.length; i++) {
+    center_el(tagNames[i]);
+  }
+})();
+</script>
+
+      
+    </footer>
+  </body>
+</html>
+
