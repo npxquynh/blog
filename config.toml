@@ -1,4 +1,5 @@
 baseURL = "http://npxquynh.github.io/blog"
 languageCode = "en-us"
 title = "Blog"
-theme = "hugo-classic"
+theme = "er"
+showtoc = false

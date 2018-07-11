@@ -8,7 +8,7 @@ I was reading the [Mastering Ruby blocks in less than 5 minutes](https://mixandg
 
 Blocks are syntactic structures in Ruby; they are not objects, and cannot be manipulated as objects. It is possible, however, to create an object that represents a block. And that object is call `Proc` object.
 
-```
+{{< highlight ruby >}}
 # Block
 [-1, 0, 1].map { |x| x > 0 } # block is in between the curly braces
 [-1, 0, 1].map do |x|
@@ -17,7 +17,8 @@ end                          # block is everything between the do and end
 
 # Creating a proc object that represents a block
 a_proc = Proc.new { |x| x > 0 }
-```
+{{< /highlight >}}
+
 
 Procs have block-like behaviour and lambdas have method-like behaviour. Both, however, are instances of class `Proc` [333]
 
@@ -25,28 +26,28 @@ Procs have block-like behaviour and lambdas have method-like behaviour. Both, ho
 
 ### `Proc` object that is a proc(not a lambda)
 
-```
+{{< highlight ruby >}}
 is_positive_proc = Proc.new { |x| x > 0 } #<Proc:...>
 is_positive_proc_2 = proc { |x| x > 0 } #<Proc: ...> From Ruby 1.9 only
-```
+{{< /highlight >}}
 
 ### `Proc` object that is a lambda (not a proc)
 
-```
+{{< highlight ruby >}}
 is_positive_lambda = lambda { |x| x > 0 } #<Proc:... (lambda)>
 is_positive_lambda_2 = -> (x) { x > 0 } #<Proc:... (lambda)>
-```
+{{< /highlight >}}
 
 ### Calling `Proc` object
 
 `Proc` object (either procs or lambdas) are objects, not methods. They can be invoked by `call` method, or `[]`
 
-```
+{{< highlight ruby >}}
 is_positive_proc #<Proc:...>
 is_positive_proc(3) # NoMethodError: undefined method `is_positive_proc' for main:Object
 is_positive_proc.call(3) # true
 is_positive_proc[-5] # false
-```
+{{< /highlight >}}
 
 ### Resources
 1. [What Is the Difference Between a Block, a Proc, and a Lambda in Ruby?](https://awaxman11.github.io/blog/2013/08/05/what-is-the-difference-between-a-block/) by Adam Waxman 
