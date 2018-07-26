@@ -6,10 +6,23 @@
     <description>Recent content on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Jul 2018 23:13:36 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 26 Jul 2018 15:26:00 +0200</lastBuildDate>
     
 	<atom:link href="http://npxquynh.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Parse Json</title>
+      <link>http://npxquynh.github.io/blog/posts/parse-json/</link>
+      <pubDate>Thu, 26 Jul 2018 15:26:00 +0200</pubDate>
+      
+      <guid>http://npxquynh.github.io/blog/posts/parse-json/</guid>
+      <description>I usually use 2 ways to parse JSON.
+Oj Source code
+This one can parse Json really fast.
+require &amp;#39;oj&amp;#39; sample = &amp;#39;{&amp;#34;greeting&amp;#34;: &amp;#34;hello&amp;#34;, &amp;#34;name&amp;#34;: &amp;#34;sunflower&amp;#34;}&amp;#39; Oj.load(sample) # {&amp;#34;greeting&amp;#34;=&amp;gt;&amp;#34;hello&amp;#34;, &amp;#34;name&amp;#34;=&amp;gt;&amp;#34;sunflower&amp;#34;} Oj.load(sample, symbol_keys: true) # {:greeting=&amp;gt;&amp;#34;hello&amp;#34;, :name=&amp;gt;&amp;#34;sunflower&amp;#34;} Oj.load(sample, symbolize_names: true) # {:greeting=&amp;gt;&amp;#34;hello&amp;#34;, :name=&amp;gt;&amp;#34;sunflower&amp;#34;} JSON module from Ruby Stdlib Documentation
+require &amp;#39;json&amp;#39; sample = &amp;#39;{&amp;#34;greeting&amp;#34;: &amp;#34;hello&amp;#34;, &amp;#34;name&amp;#34;: &amp;#34;sunflower&amp;#34;}&amp;#39; JSON.parse(sample) # {&amp;#34;greeting&amp;#34;=&amp;gt;&amp;#34;hello&amp;#34;, &amp;#34;name&amp;#34;=&amp;gt;&amp;#34;sunflower&amp;#34;} JSON.parse(sample, symbolize_names: true) # {:greeting=&amp;gt;&amp;#34;hello&amp;#34;, :name=&amp;gt;&amp;#34;sunflower&amp;#34;} Benchmark I use the Json Placeholder to get some fake data in Json to measure the performance between Oj.</description>
+    </item>
     
     <item>
       <title>Block Proc Lambda</title>
