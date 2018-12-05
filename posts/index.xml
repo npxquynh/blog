@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Jul 2018 15:26:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 04 Dec 2018 17:33:38 +0100</lastBuildDate>
     
 	<atom:link href="http://npxquynh.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bash Ninja | Create Script as String</title>
+      <link>http://npxquynh.github.io/blog/posts/bash-ninja-create-script-as-string/</link>
+      <pubDate>Tue, 04 Dec 2018 17:33:38 +0100</pubDate>
+      
+      <guid>http://npxquynh.github.io/blog/posts/bash-ninja-create-script-as-string/</guid>
+      <description>There comes a time I need to write a long curl command, interpolated with some variable. And I want to see the whole output of that command, only then I will start to execute it. This is an example of how I do it. And follow by the explanation (mostly for myself) why it work.
+Example So we Specific example:
+script=&amp;#34;$(cat &amp;lt;&amp;lt;&amp;#39;EOF&amp;#39; API_BASE_PATH=&amp;#34;https://swapi.co/api/&amp;#34; API_ENDPOINT=&amp;#34;starships&amp;#34; for starship in `seq 1 2`; do printf &amp;#34;Starship ${starship}\n&amp;#34; curl -X GET &amp;#34;${API_BASE_PATH}${API_ENDPOINT}/${starship}/&amp;#34; printf &amp;#34;\n&amp;#34; done EOF )&amp;#34; echo &amp;#34;${script}&amp;#34; eval &amp;#34;${script}&amp;#34;  Why does it work that way?</description>
+    </item>
     
     <item>
       <title>Parse Json</title>
