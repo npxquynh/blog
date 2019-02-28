@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <title>Git HEAD with caret and tilde - Blog</title>
+  <meta content='Git HEAD with caret and tilde - Blog' property='title' />
+  <meta content='Git HEAD with caret and tilde - Blog' property='og:title' />
+
+
+<meta property="og:description" content="HEAD~ or HEAD~1 refer to the parent of the commit. HEAD~2 refer to the parents of parent of the commit, aka. grandparent
+HEAD^ or HEAD^1 refer to the first parent of the commit. HEAD^2 refers to the second parent of the commit.
+Suppose that I have a git repository like this
+&gt;&gt; git log --graph --oneline * c6ca995 (HEAD -&gt; master) three.txt in master branch * 9997436 Merge branch &#39;two&#39; |\ | * 0dda652 (two) two." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://npxquynh.github.io/blog/posts/git-head-hat-1-vs-head-tilde-1/" />
+
+
+<meta property="article:published_time" content="2019-02-28T14:10:45&#43;01:00"/>
+
+<meta property="article:modified_time" content="2019-02-28T14:10:45&#43;01:00"/>
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52" />
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+<style type="text/css">/*https://coolors.co/afd5aa-f0f2ef-a69f98-3d3d3d-8c6057*/
+:root {
+  --main-color: #8C6056; 
+  --secondary-color: #AFD5AA;
+  --logo-text-color: #fff;
+  --body-text-color: #3d3d3d;
+  --heading-text-color: #383838;
+  --background-color: #fff;
+}</style>
+<link href='/blog/css/tachyons.min.css' rel="stylesheet">
+<link href='/blog/css/styles.css' rel="stylesheet">
+
+
+<link rel="icon" 
+ 
+  href='/blog/favicon.ico'
+
+type="image/x-icon"/>
+
+<link href='/blog/feed.xml' rel="alternate" type="application/atom+xml" title="Blog" />
+</head>
+<body class="global-font">
+  <nav class=" justify-between border-box pa3 pl3-l pr2-l mt1 mt0-ns" id="navbar">
+  <div class="flex">
+    <a class="f4 fw6 ttu no-underline dim bg-main-color pv1 ph2 br2" id="site-title" href='/blog' title="Home">Blog</a>
+  </div>
+  
+</nav>
+  
+<main class="center mv4 content-width ph3">
+  <div class="f3 fw6 heading-color heading-font post-title">Git HEAD with caret and tilde</div>
+  <p class="silver f6 mt1 mb4 post-meta">
+    <time>28 Feb 2019</time> 
+    
+    
+    
+  </p>
+  <div class="lh-copy post-content"><p><code>HEAD~</code> or <code>HEAD~1</code> refer to the parent of the commit.
+<code>HEAD~2</code> refer to the parents of parent of the commit, aka. grandparent</p>
+
+<p><code>HEAD^</code> or <code>HEAD^1</code> refer to the first parent of the commit.
+<code>HEAD^2</code> refers to the second parent of the commit.</p>
+
+<p>Suppose that I have a git repository like this</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt;&gt; git log --graph --oneline
+* c6ca995 <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> three.txt in master branch
+*   <span style="color:#ae81ff">9997436</span> Merge branch <span style="color:#e6db74">&#39;two&#39;</span>
+|<span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>| * 0dda652 <span style="color:#f92672">(</span>two<span style="color:#f92672">)</span> two.txt in a branch
+* | 5c224e8 two.txt in master branch
+|/
+* c131cae Add one.txt
+* b8a505f Add README.md</code></pre></div>
+
+<p>For getting just the parent of a commit, caret and tilde <code>^, ~</code> returns the same result.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt;&gt; git rev-parse --short HEAD~1
+<span style="color:#ae81ff">9997436</span>
+
+&gt;&gt; git rev-parse --short HEAD^1
+<span style="color:#ae81ff">9997436</span></code></pre></div>
+
+<p>However, when we are moving from 1 to 2. There are differences. This will not work because the commit that <code>HEAD</code> are pointing to only has 1 parent.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> 
+&gt;&gt; git rev-parse --short HEAD~2
+5c224e8
+
+&gt;&gt; git rev-parse --short HEAD^2
+fatal: Needed a single revision</code></pre></div>
+
+<p>Now, let dig a bit deeper on the caret. <code>^1, ^2</code> are for getting the first and second parents.<code>HEAD~1</code> points to the merge commit. This merge commit has 2 parents, the first parent is the commit in the master branch, the second parent is the commit from the branch that you merge into a master branch. This is how the caret works:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt;&gt; git rev-parse --short HEAD~1^1
+5c224e8 <span style="color:#75715e"># first parent, commit &#34;two.txt in master branch&#34;</span>
+
+&gt;&gt; git rev-parse --short HEAD~1^2
+0dda652 <span style="color:#75715e"># second parent, two.txt in a branch</span></code></pre></div>
+
+<p>For the tilde <code>~</code>, it can go to find the parent, grandparent, grand-grandparent&hellip;. Hence <code>HEAD~1</code> will be <code>9997436</code>, <code>HEAD~2</code> will be <code>5c224e8</code>, etc.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt;&gt; git log master --first-parent --oneline
+c6ca995 <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> three.txt in master branch
+<span style="color:#ae81ff">9997436</span> Merge branch <span style="color:#e6db74">&#39;two&#39;</span>
+5c224e8 two.txt in master branch
+c131cae Add one.txt
+b8a505f Add README.md</code></pre></div>
+</div>
+</main>
+ 
+
+
+
+
+
+
+
+
+<div class="pagination tc tr-l db fixed-l bottom-2-l right-2-l mb3 mb0-l">
+  
+<a id="scroll-to-top" class="f6 o-0 link br2 ph2 pv1 mb1 bg-main-color pointer" onclick="topFunction()" style="color: #fff; visibility: hidden; display: none; transition: opacity .5s, visibility .5s;" title="back to top">back to top</a>
+<br>
+  <p class="mb0 mt2">
+  <a href="http://npxquynh.github.io/blog/posts/unicode-and-mysql/">prev post</a>
+  
+  </p>
+</div>
+
+  <footer class="content-width mt0 mt5-l mb4 f6 center ph3 gray tc tl-l">
+  <hr class="dn db-l ml0-l gray w3"><br>
+  Powered by <a href="https://gohugo.io/" target="_blank" class="link gray dim">Hugo</a>, based on the <a href="https://github.com/lingxz/er" target="_blank" class="link gray dim">Er</a> theme. <br>
+  
+</footer>
+  
+
+
+
+
+
+
+<script type="text/javascript">
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+
+  
+  if (document.getElementById("tag-cloud") !== null) { 
+    if (prevScrollpos > currentScrollPos) { 
+      document.getElementById("tag-cloud").style.visibility = "visible";
+      document.getElementById("tag-cloud").style.opacity = "1";
+    } else {
+      document.getElementById("tag-cloud").style.visibility = "hidden";
+      document.getElementById("tag-cloud").style.opacity = "0";
+    }
+  }
+  
+
+  
+  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+      document.getElementById("scroll-to-top").style.display = "inline";
+      document.getElementById("scroll-to-top").style.visibility = "visible";
+      document.getElementById("scroll-to-top").style.opacity = "1";
+  } else {
+      document.getElementById("scroll-to-top").style.visibility = "hidden";
+      document.getElementById("scroll-to-top").style.opacity = "0";
+  }
+  
+  prevScrollpos = currentScrollPos;
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0; 
+  document.documentElement.scrollTop = 0; 
+}
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

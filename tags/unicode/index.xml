@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unicode on Blog</title>
+    <link>http://npxquynh.github.io/blog/tags/unicode/</link>
+    <description>Recent content in Unicode on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 Feb 2019 14:28:57 +0100</lastBuildDate>
+    
+	<atom:link href="http://npxquynh.github.io/blog/tags/unicode/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Which emojis can be stored in MySQL with utf8 encoding?</title>
+      <link>http://npxquynh.github.io/blog/posts/unicode-and-mysql/</link>
+      <pubDate>Fri, 22 Feb 2019 14:28:57 +0100</pubDate>
+      
+      <guid>http://npxquynh.github.io/blog/posts/unicode-and-mysql/</guid>
+      <description>There are so many great articles on the web about Unicode and UTF-8 encoding already. For example:
+ David C.Zentgraf - What Every Programmer Absolutely, Positively Needs To Know About Encodings And Character Sets To Work With Text
+ Joel Spolsky - The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)
+  Unicode provides a unique number for every character, no matter what the platform, no matter what the program, no matter what the language.</description>
+    </item>
+    
+  </channel>
+</rss>
