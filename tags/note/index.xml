@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Note on Blog</title>
+    <link>http://npxquynh.github.io/blog/tags/note/</link>
+    <description>Recent content in Note on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Feb 2019 14:10:45 +0100</lastBuildDate>
+    
+	<atom:link href="http://npxquynh.github.io/blog/tags/note/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git HEAD with caret and tilde</title>
+      <link>http://npxquynh.github.io/blog/posts/git-head-hat-1-vs-head-tilde-1/</link>
+      <pubDate>Thu, 28 Feb 2019 14:10:45 +0100</pubDate>
+      
+      <guid>http://npxquynh.github.io/blog/posts/git-head-hat-1-vs-head-tilde-1/</guid>
+      <description>HEAD~ or HEAD~1 refer to the parent of the commit. HEAD~2 refer to the parents of parent of the commit, aka. grandparent
+HEAD^ or HEAD^1 refer to the first parent of the commit. HEAD^2 refers to the second parent of the commit.
+Suppose that I have a git repository like this
+&amp;gt;&amp;gt; git log --graph --oneline * c6ca995 (HEAD -&amp;gt; master) three.txt in master branch * 9997436 Merge branch &amp;#39;two&amp;#39; |\ | * 0dda652 (two) two.</description>
+    </item>
+    
+  </channel>
+</rss>
