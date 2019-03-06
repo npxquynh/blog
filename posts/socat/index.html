@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='So I have a situtation that there is MySQL instance running at 198.168.100.100:34357. The host IP is difficult to remember, the port number is just something random.
+It would be easier for me to receive all traffics for MySQL at some localhost:3306 port. 3306 is the default port for MySQL.
+And the fact that I&rsquo;m using OSX makes things a bit harder, the nc netcat in OSX doesn&rsquo;t work the same way as Linux nc.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Socat - host forwarding • Blog'>
+<meta property='og:description' content='So I have a situtation that there is MySQL instance running at 198.168.100.100:34357. The host IP is difficult to remember, the port number is just something random.
+It would be easier for me to receive all traffics for MySQL at some localhost:3306 port. 3306 is the default port for MySQL.
+And the fact that I&rsquo;m using OSX makes things a bit harder, the nc netcat in OSX doesn&rsquo;t work the same way as Linux nc.'>
+<meta property='og:url' content='http://npxquynh.github.io/blog/posts/socat/'>
+<meta property='og:site_name' content='Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='network'><meta property='article:tag' content='note'><meta property='article:published_time' content='2019-03-06T20:41:36&#43;01:00'/><meta property='article:modified_time' content='2019-03-06T20:41:36&#43;01:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.52" />
+
+  <title>Socat - host forwarding • Blog</title>
+  <link rel='canonical' href='http://npxquynh.github.io/blog/posts/socat/'>
+  
+  
+  <link rel='icon' href='/blog/favicon.ico'>
+<link rel='stylesheet' href='/blog/assets/css/main.4a10984a.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts'>
+
+  <div class='site'><a class='screen-reader-text' href='#content'>Skip to Content</a><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    
+    <ul></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Blog</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Socat - host forwarding</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2019-03-06T20:41:36&#43;01:00'>2019, Mar 06</time>
+</span>
+
+  
+  
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>So I have a situtation that there is MySQL instance running at <code>198.168.100.100:34357</code>. The host IP is difficult to remember, the port number is just something random.</p>
+
+<p>It would be easier for me to receive all traffics for MySQL at some <code>localhost:3306</code> port. 3306 is the default port for MySQL.</p>
+
+<p>And the fact that I&rsquo;m using OSX makes things a bit harder, the <code>nc</code> netcat in OSX doesn&rsquo;t work the same way as Linux <code>nc</code>. The command that works for me finally is:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">socat TCP-LISTEN:3306,fork TCP:192.168.100.100:34357</code></pre></div>
+
+<p>What it does is that all traffic coming to <code>localhost:3306</code> will be forwarded to <code>192.168.100.100:34357</code></p>
+
+<p>The structure for the command is <code>socat [options] &lt;address&gt; &lt;address&gt;</code></p>
+
+<ul>
+<li><code>TCP-LISTEN:3306,fork</code> is one address.</li>
+<li><code>TCP:192.168.100.100:34357</code> is another address.</li>
+<li><code>TCP-LISTEN</code> and <code>TCP</code> are address type keywords.</li>
+<li><code>3306</code>, <code>192.168.100.100</code>, <code>34357</code> are address parameters.</li>
+<li><code>fork</code> is an address option, and it follows the address parameters after a &lsquo;,&rsquo;</li>
+</ul>
+
+<p>What I realize is that it&rsquo;s so much helpful to go through the <code>man socat</code>, but don&rsquo;t look for details. It&rsquo;s useful in the beginning to read through the structure and understand the basic.</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/blog/tags/network/'>Network</a>, <a class='tag' href='/blog/tags/note/'>Note</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/blog/posts/git-head-hat-1-vs-head-tilde-1/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Git HEAD with caret and tilde</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><div class='copyright'>
+  <p></p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__public_path__='\/blog\/assets\/js\/'</script>
+
+<script src='/blog/assets/js/main.fae8ed32.js'></script>
+
+</body>
+
+</html>
+

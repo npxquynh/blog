@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Feb 2019 14:10:45 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 06 Mar 2019 20:41:36 +0100</lastBuildDate>
     
 	<atom:link href="http://npxquynh.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Socat - host forwarding</title>
+      <link>http://npxquynh.github.io/blog/posts/socat/</link>
+      <pubDate>Wed, 06 Mar 2019 20:41:36 +0100</pubDate>
+      
+      <guid>http://npxquynh.github.io/blog/posts/socat/</guid>
+      <description>So I have a situtation that there is MySQL instance running at 198.168.100.100:34357. The host IP is difficult to remember, the port number is just something random.
+It would be easier for me to receive all traffics for MySQL at some localhost:3306 port. 3306 is the default port for MySQL.
+And the fact that I&amp;rsquo;m using OSX makes things a bit harder, the nc netcat in OSX doesn&amp;rsquo;t work the same way as Linux nc.</description>
+    </item>
     
     <item>
       <title>Git HEAD with caret and tilde</title>
