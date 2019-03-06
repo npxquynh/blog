@@ -1,7 +1,7 @@
 baseURL = "http://npxquynh.github.io/blog"
 languageCode = "en-us"
 title = "Blog"
-theme = "minimo"
+theme = "er"
 showtoc = true
 
 [author]
