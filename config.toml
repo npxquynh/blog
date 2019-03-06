@@ -1,5 +1,12 @@
 baseURL = "http://npxquynh.github.io/blog"
 languageCode = "en-us"
 title = "Blog"
-theme = "er"
-showtoc = false
+theme = "hyde"
+showtoc = true
+
+[author]
+    name = "Quynh Nguyen"       #Author name
+    github = "npxquynh"     #Github username
+    linkedin = "quynh1nguyen"   #LinkedIn username
+    twitter = ""    #Twitter username
+    instagram = ""  #Instagram username
